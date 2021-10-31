@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Image OCR</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+
+    <script type="text/javascript" class="jsbin"
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+    <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
+
+    <script type="text/javascript" src="main.js"></script>
+
+</head>
+
+<body>
+
+    <div>
+        <h1 class="head">LIBRE OCR</h1>
+        <p class="head-child">recognize text from image</p>
+    </div>
+    <div class="upload-container">
+        <div class="alert-warning">
+            <p>TIP: Don't add full page screenshots rather add snippets of text for better ocr</p>
+        </div>
+        <div class="file-upload-container">
+            <div class="file-upload">
+                <input class="input-img-url" type="text" placeholder="Enter the image url only image(not pdf)" />
+
+                <p style="text-align:center;"> OR </p>
+                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Click
+                    to upload an Image</button>
+
+                <div class="file-upload-placeholder">
+                    <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+                    <div class="drag-text">
+                        <h3>Drag n drop a file or select add Image</h3>
+                    </div>
+                </div>
+
+                <div class="file-upload-preview">
+                    <img class="file-upload-image" src="#" alt="your image" />
+                    <div class="file-upload-remove">
+                        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
+                                class="image-title">Uploaded Image</span></button>
+                    </div>
+                </div>
+                <br>
+                <button class="file-upload-btn" type="button" onclick="ocr_start()">Start the ocr</button>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
