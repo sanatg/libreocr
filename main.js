@@ -37,23 +37,42 @@ $(".file-upload-placeholder").bind("dragleave", function () {
 
 function ocr_start() {
  var imgurl =   $(".input-img-url").val(); // get
+ document.getElementById("start-text").innerHTML = "Starting the OCR....";
+
  if (imgurl == "") {
   var image = window.localStorage.getItem("image");
   Tesseract.recognize(
     image,
     'eng',
-    { logger: m => console.log(m) }
+    { logger: m => document.getElementById("percent-done").innerHTML = m.progress+"00% done" }
   ).then(({ data: { text } }) => {
     console.log(text);
+    document.getElementById("start-text").innerHTML = "OCR Completed....";
+    toggleModal()
+    document.getElementById("ocr-result").value = text;
   })
  }
  else {
-  Tesseract.recognize(
-    imgurl,
+   imgurlcors = "https://libreproxy.herokuapp.com/"+imgurl;
+   Tesseract.recognize(
+    imgurlcors,
     'eng',
-    { logger: m => console.log(m) }
+    { logger: m => document.getElementById("percent-done").innerHTML = m.progress+"00% done" }
   ).then(({ data: { text } }) => {
     console.log(text);
+    document.getElementById("start-text").innerHTML = "OCR Completed....";
+    toggleModal()
+    document.getElementById("ocr-result").value = text;
   })
  }
+}
+
+function toggleModal() {
+  document.getElementById('modal').classList.toggle('hidden')
+}
+function copytext(){
+  var copyText = document.getElementById("ocr-result");
+  copyText.select()
+  document.execCommand("copy");
+  toggleModal()
 }

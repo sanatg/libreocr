@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Image OCR</title>
+    <title>LIBRE OCR</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
 
@@ -14,7 +14,8 @@
     <script src='https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js'></script>
 
     <script type="text/javascript" src="main.js"></script>
-
+    <link rel='stylesheet' type='text/css' media='screen' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
 </head>
 
 <body>
@@ -29,9 +30,13 @@
         </div>
         <div class="file-upload-container">
             <div class="file-upload">
-                <input class="input-img-url" type="text" placeholder="Enter the image url only image(not pdf)" />
+                <input class="input-img-url" type="text" placeholder="Enter the image url" />
+                <br>
+                <br>
 
                 <p style="text-align:center;"> OR </p>
+                <br>
+
                 <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Click
                     to upload an Image</button>
 
@@ -55,6 +60,27 @@
             </div>
         </div>
     </div>
+    <h1 style="text-align:center;" id="start-text"></h1>
+    <h3 style="text-align:center;" id="percent-done"></h3>
+      
+      <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
+        <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <div class="fixed inset-0 transition-opacity">
+            <div class="absolute inset-0 bg-gray-900 opacity-75" />
+          </div>
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+          <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <label>Scanned text</label>
+              <textarea type="text" id="ocr-result" class="w-full bg-gray-100 p-2 mt-2 mb-3" height="100px"></textarea>
+            </div>
+            <div class="bg-gray-200 px-4 py-3 text-right">
+
+              <button type="button" class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 mr-2" onclick="copytext()"><i class="fas fa-copy"></i> Copy to clipboard</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 
 </html>

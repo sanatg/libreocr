@@ -5,16 +5,17 @@ body {
 .head {
     text-align: center;
     font-size: 40px;
+    font-weight: bold;
 
 }
 .head-child {
     text-align: center;
     font-size: 10px;
-    margin-top: -3em;
+    margin-top: -1em;
 }
 /* main upload container */
 .upload-container {
-margin-top:7em;
+margin-top:8em;
 }
 /* warning alert container */
 .alert-warning {
@@ -119,7 +120,7 @@ margin-top:7em;
 }
 
 .remove-image {
-  width: 200px;
+  width: 100%;
   margin: 0;
   color: #fff;
   background: #cd4535;
@@ -148,7 +149,7 @@ margin-top:7em;
 .input-img-url {
   width: 97%;
   height:20px;
-  padding: 10px;
+  padding: 25px;
   border: none;
   border-radius: 4px;
   outline: none;
